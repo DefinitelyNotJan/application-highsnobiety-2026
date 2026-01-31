@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Jan Lönnqvist — Senior Creative Application — Highsnobiety</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --black: #000;
+            --white: #fff;
+            --gray-100: #f0f0f0;
+            --gray-200: #e0e0e0;
+            --gray-400: #999;
+            --gray-600: #737373;
+            --gray-800: #333;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* ====== PARALLAX SECTIONS ====== */
+        .parallax-section {
+            position: relative;
+            overflow: hidden;
+            will-change: transform;
+        }
+
+        .parallax-bg {
+            position: absolute;
+            top: -30%;
+            left: 0;
+            width: 100%;
+            height: 160%;
+            will-change: transform;
+            z-index: 0;
+        }
+
+        /* ====== NAV ====== */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 40px;
+            background: rgba(0,0,0,0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            mix-blend-mode: normal;
+        }
+
+        nav .brand {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        nav .nav-links a {
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gray-400);
+            text-decoration: none;
+            margin-left: 24px;
+            transition: color 0.3s;
+        }
+
+        nav .nav-links a:hover { color: var(--white); }
+
+        /* ====== HERO ====== */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 0 48px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(20vw, 28vw, 35vw);
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.03);
+            white-space: nowrap;
+            pointer-events: none;
+            line-height: 0.85;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-label {
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gray-400);
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(4rem, 10vw, 9rem);
+            text-transform: uppercase;
+            line-height: 0.88;
+            letter-spacing: -0.02em;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 .outline {
+            -webkit-text-stroke: 1.5px rgba(255,255,255,0.6);
+            color: transparent;
+        }
+
+        .hero-sub {
+            margin-top: 28px;
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--gray-400);
+            max-width: 520px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .scroll-line {
+            position: absolute;
+            bottom: 0;
+            left: 48px;
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(180deg, var(--gray-600), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(1); }
+            50% { opacity: 0.8; transform: scaleY(1.2); }
+        }
+
+        /* ====== CULTURE MARQUEE ====== */
+        .marquee-section {
+            padding: 0;
+            overflow: hidden;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .marquee-track {
+            display: flex;
+            white-space: nowrap;
+            animation: marqueeScroll 25s linear infinite;
+        }
+
+        .marquee-track.reverse {
+            animation-direction: reverse;
+        }
+
+        .marquee-item {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(3rem, 6vw, 5.5rem);
+            text-transform: uppercase;
+            padding: 20px 0;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .marquee-item .dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: var(--white);
+            border-radius: 50%;
+            margin: 0 32px;
+            vertical-align: middle;
+        }
+
+        .marquee-item .outline-text {
+            -webkit-text-stroke: 1px rgba(255,255,255,0.4);
+            color: transparent;
+        }
+
+        @keyframes marqueeScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ====== SPLIT SECTIONS ====== */
+        .split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+        }
+
+        .split-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 56px;
+        }
+
+        .split-visual {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .split-visual-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .section-number {
+            font-family: 'Anton', sans-serif;
+            font-size: 8rem;
+            color: rgba(255,255,255,0.04);
+            line-height: 1;
+            margin-bottom: -20px;
+        }
+
+        .section-tag {
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gray-600);
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2.2rem, 4vw, 3.8rem);
+            text-transform: uppercase;
+            line-height: 0.95;
+            margin-bottom: 24px;
+            letter-spacing: -0.01em;
+        }
+
+        .section-body {
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--gray-400);
+            max-width: 460px;
+        }
+
+        .section-body strong {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        /* ====== VISUAL PANELS (CSS art/patterns) ====== */
+        .culture-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 3px;
+            width: 100%;
+            height: 100%;
+            background: var(--black);
+        }
+
+        .culture-cell {
+            background: var(--gray-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .culture-cell .cell-text {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            text-transform: uppercase;
+            color: var(--black);
+            text-align: center;
+            padding: 20px;
+            line-height: 1;
+        }
+
+        .culture-cell:nth-child(2) { background: var(--white); }
+        .culture-cell:nth-child(3) { background: var(--white); }
+        .culture-cell:nth-child(4) { background: var(--gray-100); }
+
+        .culture-cell .cell-number {
+            position: absolute;
+            bottom: 8px;
+            right: 12px;
+            font-size: 0.55rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--gray-400);
+        }
+
+        /* ====== STACKED TEXT PANEL ====== */
+        .stack-panel {
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 48px;
+        }
+
+        .stack-word {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            text-transform: uppercase;
+            line-height: 0.95;
+            color: var(--black);
+        }
+
+        .stack-word.ghost {
+            -webkit-text-stroke: 1.5px var(--black);
+            color: transparent;
+        }
+
+        /* ====== STRIPE PANEL ====== */
+        .stripe-panel {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stripe {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding: 0 32px;
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(1rem, 2vw, 1.6rem);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .stripe:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .stripe .year {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 500;
+            letter-spacing: 0.15em;
+            color: var(--gray-600);
+            margin-left: auto;
+        }
+
+        .stripe:hover .year { color: var(--gray-800); }
+
+        /* ====== FULL-WIDTH STATEMENT ====== */
+        .statement {
+            padding: 15vh 48px;
+            text-align: center;
+            position: relative;
+        }
+
+        .statement-text {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(3rem, 7vw, 7rem);
+            text-transform: uppercase;
+            line-height: 0.92;
+            letter-spacing: -0.02em;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .statement-text .thin {
+            -webkit-text-stroke: 1.5px rgba(255,255,255,0.5);
+            color: transparent;
+        }
+
+        /* ====== EXPERIENCE TICKER ====== */
+        .ticker-section {
+            padding: 10vh 48px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .ticker-label {
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gray-600);
+            margin-bottom: 48px;
+        }
+
+        .ticker-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: rgba(255,255,255,0.06);
+        }
+
+        .ticker-card {
+            background: var(--black);
+            padding: 36px 28px;
+        }
+
+        .ticker-card .tc-brand {
+            font-family: 'Anton', sans-serif;
+            font-size: 1.6rem;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .ticker-card .tc-role {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--gray-600);
+            margin-bottom: 14px;
+        }
+
+        .ticker-card .tc-desc {
+            font-size: 0.85rem;
+            font-weight: 300;
+            line-height: 1.65;
+            color: var(--gray-400);
+        }
+
+        /* ====== TOOLS ====== */
+        .tools-section {
+            padding: 10vh 48px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .tools-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 32px;
+        }
+
+        .tool-pill {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            border: 1px solid rgba(255,255,255,0.12);
+            color: var(--gray-400);
+            transition: all 0.3s;
+        }
+
+        .tool-pill:hover {
+            background: var(--white);
+            color: var(--black);
+            border-color: var(--white);
+        }
+
+        /* ====== CTA ====== */
+        .cta {
+            padding: 15vh 48px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .cta h2 {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            text-transform: uppercase;
+            line-height: 0.92;
+            margin-bottom: 24px;
+        }
+
+        .cta p {
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--gray-400);
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .cta-buttons a {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 16px 40px;
+            border: 1.5px solid var(--white);
+            color: var(--white);
+            transition: all 0.3s;
+        }
+
+        .cta-buttons a:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .cta-buttons a.filled {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .cta-buttons a.filled:hover {
+            background: transparent;
+            color: var(--white);
+        }
+
+        /* ====== FOOTER ====== */
+        footer {
+            padding: 32px 48px;
+            text-align: center;
+            font-size: 0.6rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.15);
+            border-top: 1px solid rgba(255,255,255,0.04);
+        }
+
+        /* ====== RESPONSIVE ====== */
+        @media (max-width: 900px) {
+            .split { grid-template-columns: 1fr; }
+            .split-visual { min-height: 60vh; }
+            .ticker-grid { grid-template-columns: 1fr; }
+            .hero { padding: 0 24px 60px; }
+            .split-text { padding: 60px 24px; }
+            nav { padding: 16px 20px; }
+        }
+
+        /* ====== REVEAL ANIMATION ====== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="brand">Jan Lönnqvist</div>
+    <div class="nav-links">
+        <a href="#culture">Culture</a>
+        <a href="#vision">Vision</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<!-- ====== HERO ====== -->
+<section class="hero parallax-section">
+    <div class="hero-bg-text" data-parallax-speed="0.15">CULTURE</div>
+    <div class="hero-label reveal">Application /Senior Creative (all genders)</div>
+    <h1 class="reveal reveal-delay-1">
+        Born in<br>
+        <span class="outline">the culture.</span><br>
+        Built for it.
+    </h1>
+    <p class="hero-sub reveal reveal-delay-2">
+        10+ years shaping brand narratives at the intersection of street fashion, music, and design. From Helsinki's underground scene to Amsterdam's creative industry. Now ready to create for the culture at Highsnobiety.
+    </p>
+    <div class="scroll-line"></div>
+</section>
+
+<!-- ====== CULTURE MARQUEE ====== -->
+<div class="marquee-section">
+    <div class="marquee-track">
+        <div class="marquee-item">Basketball <span class="dot"></span> Hip-Hop <span class="dot"></span> Streetwear <span class="dot"></span> <span class="outline-text">Art Direction</span> <span class="dot"></span> Sneakers <span class="dot"></span> Graphic Design <span class="dot"></span> Skate Culture <span class="dot"></span> <span class="outline-text">Typography</span> <span class="dot"></span></div>
+        <div class="marquee-item">Basketball <span class="dot"></span> Hip-Hop <span class="dot"></span> Streetwear <span class="dot"></span> <span class="outline-text">Art Direction</span> <span class="dot"></span> Sneakers <span class="dot"></span> Graphic Design <span class="dot"></span> Skate Culture <span class="dot"></span> <span class="outline-text">Typography</span> <span class="dot"></span></div>
+    </div>
+</div>
+
+<!-- ====== SECTION 01: CULTURE ====== -->
+<section class="split parallax-section" id="culture">
+    <div class="split-text">
+        <div class="section-number reveal">01</div>
+        <div class="section-tag reveal">Street Culture /Not a Reference, a Lifestyle</div>
+        <h2 class="section-title reveal reveal-delay-1">
+            I don't research<br>the culture.<br>I live it.
+        </h2>
+        <p class="section-body reveal reveal-delay-2">
+            <strong>Basketball courts before boardrooms.</strong> I grew up between the court and the studio, playing ball, collecting sneakers, digging through crates. Hip-hop shaped my eye for composition and rhythm. Streetwear taught me that design is identity.<br><br>
+            <strong>This isn't a mood board to me. It's my life.</strong> From the energy of a pickup game to the typography of a bootleg tee, I bring an authenticity to creative work that can't be sourced from a trend report.
+        </p>
+    </div>
+    <div class="split-visual">
+        <div class="culture-grid" data-parallax-speed="0.08">
+            <div class="culture-cell">
+                <div class="cell-text">Court<br>Culture</div>
+                <div class="cell-number">HEL / AMS / SF</div>
+            </div>
+            <div class="culture-cell">
+                <div class="cell-text">Sneaker<br>Head</div>
+                <div class="cell-number">Since '99</div>
+            </div>
+            <div class="culture-cell">
+                <div class="cell-text">Hip-Hop<br>Rap</div>
+                <div class="cell-number">The Foundation</div>
+            </div>
+            <div class="culture-cell">
+                <div class="cell-text">Street<br>Wear</div>
+                <div class="cell-number">Fashion &times; Identity</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== STATEMENT ====== -->
+<section class="statement parallax-section">
+    <p class="statement-text reveal">
+        Fashion is <span class="thin">communication.</span><br>
+        Music is <span class="thin">frequency.</span><br>
+        Design is <span class="thin">both.</span>
+    </p>
+</section>
+
+<!-- ====== SECTION 02: VISION ====== -->
+<section class="split parallax-section" id="vision" style="direction: rtl;">
+    <div class="split-text" style="direction: ltr;">
+        <div class="section-number reveal">02</div>
+        <div class="section-tag reveal">Creative Vision /What I Bring to Highsnobiety</div>
+        <h2 class="section-title reveal reveal-delay-1">
+            Concept to<br>campaign.<br>Culture to<br>commerce.
+        </h2>
+        <p class="section-body reveal reveal-delay-2">
+            <strong>5+ years leading campaigns for global brands.</strong> At Rituals, I art directed the Hammam campaign, their highest-selling product launch ever. At GLS, I design across 40 countries. At Filling Pieces, I shaped their "United by Generations" lookbook.<br><br>
+            <strong>I think in 360.</strong> Social-first content, video production, brand activations, pitch decks. I've led all of it. I build creative frameworks rooted in cultural insight, not just aesthetics.
+        </p>
+    </div>
+    <div class="split-visual" style="direction: ltr;">
+        <div class="stack-panel" data-parallax-speed="0.06">
+            <div class="stack-word">Art</div>
+            <div class="stack-word ghost">Direction</div>
+            <div class="stack-word">Social</div>
+            <div class="stack-word ghost">Strategy</div>
+            <div class="stack-word">Brand</div>
+            <div class="stack-word ghost">Activations</div>
+            <div class="stack-word">Video</div>
+            <div class="stack-word ghost">Production</div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== CULTURE MARQUEE 2 ====== -->
+<div class="marquee-section">
+    <div class="marquee-track reverse">
+        <div class="marquee-item"><span class="outline-text">Filling Pieces</span> <span class="dot"></span> Rituals <span class="dot"></span> <span class="outline-text">IKEA</span> <span class="dot"></span> GLS <span class="dot"></span> <span class="outline-text">HelloFresh</span> <span class="dot"></span> DHL <span class="dot"></span> <span class="outline-text">HVO</span> <span class="dot"></span> UPM <span class="dot"></span></div>
+        <div class="marquee-item"><span class="outline-text">Filling Pieces</span> <span class="dot"></span> Rituals <span class="dot"></span> <span class="outline-text">IKEA</span> <span class="dot"></span> GLS <span class="dot"></span> <span class="outline-text">HelloFresh</span> <span class="dot"></span> DHL <span class="dot"></span> <span class="outline-text">HVO</span> <span class="dot"></span> UPM <span class="dot"></span></div>
+    </div>
+</div>
+
+<!-- ====== SECTION 03: WORK ====== -->
+<section class="split parallax-section" id="work">
+    <div class="split-text">
+        <div class="section-number reveal">03</div>
+        <div class="section-tag reveal">Selected Work /Fashion-Forward Campaigns</div>
+        <h2 class="section-title reveal reveal-delay-1">
+            From the<br>streets to<br>the studio.
+        </h2>
+        <p class="section-body reveal reveal-delay-2">
+            <strong>Filling Pieces.</strong> Art directed the "United by Generations" lookbook. Blended archival imagery with contemporary design for Amsterdam's premier sneaker brand.<br><br>
+            <strong>Rituals Cosmetics.</strong> Lead designer on their biggest campaigns. Hammam. Legend of the Dragon. Christmas Advent. Defined the brand book and visual identity.<br><br>
+            <strong>IKEA.</strong> Partnered with climate activists. Shot the campaign. Saved a forest. Design with purpose.
+        </p>
+    </div>
+    <div class="split-visual">
+        <div class="stripe-panel" data-parallax-speed="0.05">
+            <div class="stripe">Filling Pieces /Lookbook <span class="year">Amsterdam</span></div>
+            <div class="stripe">Rituals /Hammam Campaign <span class="year">Amsterdam</span></div>
+            <div class="stripe">Rituals /Legend of the Dragon <span class="year">Amsterdam</span></div>
+            <div class="stripe">GLS Group /Global Campaigns <span class="year">40 Countries</span></div>
+            <div class="stripe">DHL /Recruitment Campaign <span class="year">Agency Lead</span></div>
+            <div class="stripe">IKEA /Forest Campaign <span class="year">Finland</span></div>
+            <div class="stripe">HelloFresh /Brand Design <span class="year">Amsterdam</span></div>
+            <div class="stripe">HVO /Motion Design <span class="year">Amsterdam</span></div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== EXPERIENCE GRID ====== -->
+<section class="ticker-section">
+    <div class="ticker-label reveal">Experience /10+ Years</div>
+    <div class="ticker-grid">
+        <div class="ticker-card reveal">
+            <div class="tc-brand">GLS Group</div>
+            <div class="tc-role">Designer /Hamburg HQ</div>
+            <div class="tc-desc">Group-level creative across 40 countries. Campaigns, expos, presentations, UI/UX. Pioneering AI-integrated design workflows with Sora, Veo3, Runway, Midjourney.</div>
+        </div>
+        <div class="ticker-card reveal reveal-delay-1">
+            <div class="tc-brand">Filling Pieces</div>
+            <div class="tc-role">Art Direction /Amsterdam</div>
+            <div class="tc-desc">Designed the "United by Generations" lookbook for one of Amsterdam's most culturally relevant sneaker and streetwear labels.</div>
+        </div>
+        <div class="ticker-card reveal reveal-delay-2">
+            <div class="tc-brand">Rituals</div>
+            <div class="tc-role">Lead Graphic Designer /Amsterdam</div>
+            <div class="tc-desc">Led Hammam campaign (highest sales ever). Owned brand book. Art directed Dragon, Advent, and sustainability campaigns.</div>
+        </div>
+        <div class="ticker-card reveal reveal-delay-3">
+            <div class="tc-brand">DHL</div>
+            <div class="tc-role">Agency /Team Lead</div>
+            <div class="tc-desc">Led the DHL account at agency level. Data-driven persona design and localized recruitment campaigns across regions.</div>
+        </div>
+        <div class="ticker-card reveal">
+            <div class="tc-brand">HelloFresh</div>
+            <div class="tc-role">Team Lead /Amsterdam</div>
+            <div class="tc-desc">Led a team of 3 creatives. Recipe cards, brand collaborations across HelloFresh and Green Chef.</div>
+        </div>
+        <div class="ticker-card reveal reveal-delay-1">
+            <div class="tc-brand">IKEA</div>
+            <div class="tc-role">Art Direction /Finland/Turkey</div>
+            <div class="tc-desc">Sustainability campaign. Partnered with activists to save old-growth forest. Photography, editing, awareness design.</div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== TOOLS ====== -->
+<section class="tools-section">
+    <div class="ticker-label reveal">Toolkit</div>
+    <div class="tools-wrap reveal">
+        <span class="tool-pill">Illustrator</span>
+        <span class="tool-pill">InDesign</span>
+        <span class="tool-pill">Photoshop</span>
+        <span class="tool-pill">After Effects</span>
+        <span class="tool-pill">Premiere Pro</span>
+        <span class="tool-pill">Figma</span>
+        <span class="tool-pill">Keynote</span>
+        <span class="tool-pill">Google Slides</span>
+        <span class="tool-pill">Midjourney</span>
+        <span class="tool-pill">Sora</span>
+        <span class="tool-pill">Veo3</span>
+        <span class="tool-pill">Runway</span>
+    </div>
+</section>
+
+<!-- ====== FINAL STATEMENT ====== -->
+<section class="statement">
+    <p class="statement-text reveal">
+        I don't follow<br>
+        <span class="thin">the culture.</span><br>
+        I shape it.
+    </p>
+</section>
+
+<!-- ====== CTA ====== -->
+<section class="cta" id="contact">
+    <h2 class="reveal">Let's build<br>something real.</h2>
+    <p class="reveal reveal-delay-1">Senior Creative /Berlin / London</p>
+    <div class="cta-buttons reveal reveal-delay-2">
+        <a href="mailto:jan.lonnqvist@windowslive.com" class="filled">Email Me</a>
+        <a href="tel:+31619584748">+31 619 584 748</a>
+    </div>
+</section>
+
+<footer>
+    Jan Lönnqvist /Helsinki &middot; Amsterdam &middot; San Francisco /2026
+</footer>
+
+<script>
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Parallax scrolling
+    const parallaxElements = document.querySelectorAll('[data-parallax-speed]');
+    const heroBgText = document.querySelector('.hero-bg-text');
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                const scrollY = window.scrollY;
+
+                // Hero background text parallax
+                if (heroBgText) {
+                    heroBgText.style.transform = `translate(-50%, -50%) translateY(${scrollY * 0.15}px)`;
+                }
+
+                // Panel parallax
+                parallaxElements.forEach(el => {
+                    const speed = parseFloat(el.dataset.parallaxSpeed);
+                    const rect = el.closest('.parallax-section')?.getBoundingClientRect();
+                    if (rect) {
+                        const offset = rect.top * speed;
+                        el.style.transform = `translateY(${offset}px)`;
+                    }
+                });
+
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+</script>
+
+</body>
+</html>
